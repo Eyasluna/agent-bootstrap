@@ -37,10 +37,26 @@ Both halves are stated in `claude/CLAUDE.md`, which also records that this rule
 `includeCoAuthoredBy: false` stops that instruction at the source; the written
 rule is the backstop for machines and tools where the setting does not apply.
 
-## Memory is deliberately not here
+## Memory lives in a separate private repo
 
 This repository is **public**. Project memory holds internal hostnames, private
-IP and tailnet addresses, storage bucket names, and ticket content, so it is
-excluded by `.gitignore` and must stay excluded. See
-[`memory-restore.md`](memory-restore.md) for how memory is scoped and how to
-carry it between machines.
+IP and tailnet addresses, storage bucket names, and client ticket content, so it
+is excluded by `.gitignore` and must stay excluded.
+
+It is backed up instead to **`Eyasluna/agent-memory`** (private), which carries
+`restore.sh` and `sync.sh`:
+
+```bash
+git clone git@github.com:Eyasluna/agent-memory.git
+cd agent-memory && ./restore.sh
+```
+
+Full machine bootstrap is the two together — rules from here, memory from there:
+
+```bash
+git clone https://github.com/Eyasluna/agent-bootstarp.git && ./agent-bootstarp/install.sh
+git clone git@github.com:Eyasluna/agent-memory.git      && ./agent-memory/restore.sh
+```
+
+**Never move a file from the private repo into this one.** See
+[`memory-restore.md`](memory-restore.md) for how memory scoping works.

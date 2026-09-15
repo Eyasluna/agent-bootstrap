@@ -4,6 +4,11 @@ Memory is **not** in this repository, and must not be added to it: this repo is
 public, and memory files carry internal hostnames, private IPs, tailnet
 addresses, storage bucket names, and ticket content.
 
+It is backed up to the private companion repo
+**[`Eyasluna/agent-memory`](https://github.com/Eyasluna/agent-memory)**, which
+has `restore.sh` (repo → machine) and `sync.sh` (machine → repo). The rest of
+this page explains the scoping those scripts depend on.
+
 ## How memory is scoped
 
 Claude Code partitions memory **per working directory**, with no inheritance:
