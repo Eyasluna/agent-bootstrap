@@ -64,6 +64,32 @@ sudoers entry. Never paste credentials into a doc, ticket, PR, or commit.
 New features and infrastructure roll out **dev → qc → prod**, dev first. Don't
 skip dev because a sibling system started at qc.
 
+## Keep the rule files synced
+
+The files that define how agents work on this machine are versioned in
+**[agent-bootstrap](https://github.com/Eyasluna/agent-bootstrap)** (public):
+`~/.claude/CLAUDE.md`, the settings template, the Cursor attribution rule, and
+the per-repo `AGENTS.md` template.
+
+**When you change any of them, push the change to that repo in the same
+session.** They change rarely, so there is no batching to do and no excuse for
+the machine and the repo to drift apart — a rule that exists only locally is
+lost on the next machine.
+
+```bash
+cd ~/Dropbox/petatron/agent-bootstrap
+cp ~/.claude/CLAUDE.md claude/CLAUDE.md
+git add -A && git commit -m "..." && git push
+```
+
+Also mirror a rule change into any per-repo `AGENTS.md` that restates it, so the
+repos do not contradict the global file.
+
+**Memory is the exception — do not sync it per change.** `~/.claude/projects/*/
+memory/` changes constantly, and it is backed up to the *private*
+`agent-memory` repo on demand: run `./sync.sh` there for a checkpoint. Never
+commit memory to `agent-bootstrap`, which is public.
+
 ## Reporting
 
 Say what was actually verified and what wasn't. "Written but unrun" and "proven

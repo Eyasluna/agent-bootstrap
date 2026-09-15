@@ -5,8 +5,8 @@ machine or a fresh session starts with the same conventions instead of
 rediscovering them.
 
 ```bash
-git clone https://github.com/Eyasluna/agent-bootstarp.git
-cd agent-bootstarp && ./install.sh
+git clone https://github.com/Eyasluna/agent-bootstrap.git
+cd agent-bootstrap && ./install.sh
 ```
 
 `install.sh` installs `~/.claude/CLAUDE.md` and merges
@@ -54,7 +54,7 @@ cd agent-memory && ./restore.sh
 Full machine bootstrap is the two together — rules from here, memory from there:
 
 ```bash
-git clone https://github.com/Eyasluna/agent-bootstarp.git && ./agent-bootstarp/install.sh
+git clone https://github.com/Eyasluna/agent-bootstrap.git && ./agent-bootstrap/install.sh
 git clone git@github.com:Eyasluna/agent-memory.git      && ./agent-memory/restore.sh
 ```
 
