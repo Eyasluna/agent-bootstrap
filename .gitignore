@@ -1,0 +1,7 @@
+# Memory is machine-local and contains internal infrastructure detail
+# (hostnames, private IPs, tailnet addresses, bucket names, ticket content).
+# This repository is PUBLIC — never commit it here.
+memory/
+**/memory/
+*.local.json
+settings.json
